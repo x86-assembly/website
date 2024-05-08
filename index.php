@@ -1,8 +1,8 @@
 <?php
 
-$page_title = "MSAWP";
+$page_title = "Hello";
 $page_content = <<<IDENTIFIER
-    valid
+    There isn't much to see here... yet
     IDENTIFIER;
 
 $page_published = "2024-05-03";
