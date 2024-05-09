@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+<?php
+if(basename(__FILE__) == basename($_SERVER["SCRIPT_FILENAME"])) {
+	header("HTTP/1.0 403 Forbidden");
+
+	$page_title = "403";
+	$page_published = null;
+
+	$page_content = "<p>Template cannot be called directly</p>";
+}
+
+?><!DOCTYPE html>
 <html lang="<?= $page_lang ?? "en";?>">
 <head>
 	<meta charset="UTF-8">
@@ -24,7 +34,6 @@
 
 
 	body {
-		min-height: 100vh;
 		margin: 0;
 		background-color:#ffeed2;
 		font-family:"Helvetica", "Linux Libertine", "Georgia", "Times", "Source Serif Pro", serif;
@@ -91,18 +100,20 @@
 
 	if(isset($page_published)) {
 		echo '<p>Published: <time datetime="' . date('Y-m-d', strtotime($page_published)) . '">' . date('F jS Y', strtotime($page_published)) . '</time>';
-	}
-	if(isset($page_updated)) {
-		echo '; Last updated: <time datetime="' . date('Y-m-d', strtotime($page_updated)) . '">' . date('F jS Y', strtotime($page_updated)) . '</time>';
+
+
+		if(isset($page_updated)) {
+			echo '; Last updated: <time datetime="' . date('Y-m-d', strtotime($page_updated)) . '">' . date('F jS Y', strtotime($page_updated)) . '</time>';
+		}
+		echo '</p>';
 	}
 
-	echo '</p>';
 
 	if(isset($page_author)) {
 		echo "<p>Author: " . htmlspecialchars($page_author) . "</p>";	
 	}
 
-	echo "<p>License: " . $page_license ?? "CC BY-SA" . "</p>";
+	echo "<p>License: " . ($page_license ?? "CC BY-SA") . "</p>";
 
 	?></header>
 	<main>
