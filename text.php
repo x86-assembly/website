@@ -26,5 +26,6 @@ $page_updated = $post['date_ed'];
 $page_content = $post['content'];
 $page_author = $post['auth'];
 $page_license = $post['copy'];
+$page_lang = $post['lang'];
 
 include 'template.php';
